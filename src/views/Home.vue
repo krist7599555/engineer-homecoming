@@ -8,9 +8,9 @@
             p.hula(:class='{"is-active": hula}')
               img.logo(src='../assets/esc.jpeg')
             template(v-if='curr')
-              b(style='font-size: 5rem;') {{curr.name}} {{curr.surname}}
+              b(style='font-size: 5rem;') {{curr | fname}}
               br
-              p(style='font-size: 3rem;') วศ. {{curr.generation}}
+              p(style='font-size: 3rem;') {{curr | fgen}}
             template(v-else)
               .title นำรายชื่อออก
             br
@@ -44,9 +44,20 @@ function sleep(t) {
   });
 }
 
+function filter_name({ title, name, surname }) {
+  return `${title} ${name} ${surname}`.trim();
+}
+function filter_gen({ section, generation }) {
+  return `${section} ${generation}`.trim();
+}
+
 export default {
   name: 'home',
   components: {},
+  filters: {
+    fname: filter_name,
+    fgen: filter_gen
+  },
   data() {
     return {
       screen: 0,
