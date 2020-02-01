@@ -6,22 +6,24 @@
           template(v-if='!nameList') loading...
           template(v-else-if='screen == 0')
             p.hula(:class='{"is-active": hula}')
-              img.logo(src='../assets/esc.jpeg')
+              img.logo(src='../assets/logo.svg')
             template(v-if='curr')
               b(style='font-size: 5rem;') {{curr | fname}}
               br
               p(style='font-size: 3rem;') {{curr | fgen}}
+              hr.myhr(:class='{"is-active": hula}')
             template(v-else)
               .title นำรายชื่อออก
             br
           template(v-else)
-            img(src='../assets/esc.jpeg' style='width: 50vmin')
+            img(src='../assets/logo.svg' style='width: 70vmin; margin-top: -8rem')
     .kfixed
       .buttons
-        button.button(@click='removeCurrent' :disabled='selectIdx == null || running || interval') remove
-        button.button(v-if='!running' @click='shuffle') shuffle
-        button.button(v-else-if='running && interval' @click='stop') stop
-        button.button(v-else disabled) stop
+        template(v-if='screen == 0')
+          button.button(@click='removeCurrent' :disabled='selectIdx == null || running || interval') remove
+          button.button(v-if='!running' @click='shuffle') shuffle
+          button.button(v-else-if='running && interval' @click='stop') stop
+          button.button(v-else disabled) stop
         button.button(@click='screen = screen ^ 1') screen {{screen}}
     footer.footer
       .container
@@ -121,6 +123,8 @@ export default {
   background-image: url(../assets/movie-theater-curtains.png);
   background-size: cover;
   background-position: center;
+  background-image: url(../assets/bg.jpg);
+  background-position: top;
 }
 .hula {
   position: relative;
@@ -143,5 +147,15 @@ export default {
   padding: 1rem;
   // background-color: #eee8;
   border-radius: 8px;
+}
+.myhr {
+  width: 10rem;
+  margin: auto;
+  margin-top: 3rem;
+  background-color: #d7222b;
+  height: 3px;
+  &:not(.is-active) {
+    opacity: 0;
+  }
 }
 </style>
