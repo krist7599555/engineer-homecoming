@@ -1,19 +1,5 @@
 # engineer-homecoming
 
-## Project setup
-```
-yarn install
-```
+ระบบสุ่มรายชื่อ งานเลี้ยงศิษเก่า วิศวะ 1 กพ 63
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](./screenshot/1.png)
